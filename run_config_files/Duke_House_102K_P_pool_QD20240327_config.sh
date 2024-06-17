@@ -1,0 +1,39 @@
+set -u
+#-----------------------------
+# Run script: metarhizium-epigenetics/vicki_data/podsplit_dorado_demux/main_sbatch.sh
+#-----------------------------
+
+export SBATCH_ACCOUNT="chsi"
+
+export CPUJOB_PARTITION="chsi"
+export GPUJOB_PARTITION="scavenger-gpu"
+export GPUJOB_GPUS="RTX2080:1"
+#-----------------------------
+export DORADO_SIF_PATH='oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1'
+export POD5_SIF_PATH='oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/meta-methylome-simage:v002'
+#-----------------------------
+#-----------------------------
+#-----------------------------
+# demo data
+SCRATCH_DIR="/cwork/${USER}"
+export WORK_DIR="${SCRATCH_DIR}/Duke_House_102K_P_pool_QD20240327"
+export POD5_DIR="/datacommons/graneklab/projects/premier/Duke_House_102K_P_pool_QD20240327/no_sample/20240327_1723_P2S-01272-B_PAU72009_0fc06b8b/pod5"
+#-----------------------------
+# dorado duplex will fail if a requested model is not available for your dataset (e.g. 6mA)
+# find model names with: 
+# srun --mem=20G -c 2 -A chsi -p chsi apptainer exec oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1 dorado download --list
+export DORADO_MODEL_STRING="sup,5mC_5hmC,6mA"
+#-----------------------------
+# export KIT_NAME="SQK-NBD114-96" # for options run see --kit-name in `dorado demux --help`
+# srun --mem=5G -c 2 -A chsi -p chsi apptainer exec oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1 dorado demux --help
+export GENERATE_FASTQ="TRUE"
+
+#--------------
+## Sample Sheet
+#--------------
+# Sample Sheet Examples and Details
+# https://github.com/nanoporetech/dorado/blob/release-v0.6/tests/data/barcode_demux/sample_sheet.csv
+# https://github.com/nanoporetech/dorado/blob/master/documentation/SampleSheets.md
+# https://community.nanoporetech.com/docs/prepare/library_prep_protocols/experiment-companion-minknow/v/mke_1013_v1_revdc_11apr2016/sample-sheet-upload
+
+# export SAMPLE_SHEET="/datacommons/graneklab/projects/bsf_mb_epigenetics/ont_dna_data/Methylation_T_samples_pool/methylation_tsample_sample_sheet.csv"
