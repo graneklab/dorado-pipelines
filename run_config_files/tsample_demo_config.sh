@@ -34,7 +34,8 @@ export POD5_DIR="${WORK_DIR}/raw_data"
 # find model names with: 
 # srun --mem=20G -c 2 -A chsi -p chsi apptainer exec oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1 dorado download --list
 # export DEMUX_MODEL_STRING="sup"
-export DORADO_MODEL_STRING="sup,5mC_5hmC,6mA,4mC_5mC"
+export DORADO_MODEL_STRING="sup,5mC_5hmC,6mA"
+# export DORADO_MODEL_STRING="sup,4mC_5mC,6mA"
 #-----------------------------
 # find demux information with: 
 # srun --mem=5G -c 2 -A chsi -p chsi apptainer exec oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1 dorado demux --help
