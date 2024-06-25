@@ -7,7 +7,7 @@ set -Eeuo pipefail # https://stackoverflow.com/a/821419
 #  2. `dorado-pipelines/basecall_demux_map/main_sbatch.sh PATH_TO_THIS_CONFIG`
 
 #-----------------------------
-export DORADO_SIF_PATH='oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1'
+export DORADO_SIF_PATH='docker://ontresearch/dorado:sha58b978562389bd0f1842601fb83cdf1eb2920218'
 export POD5_SIF_PATH='oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/meta-methylome-simage:v002'
 #-----------------------------
 export REFERENCE_GENOME_URL="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/013/426/205/GCA_013426205.1_ASM1342620v1/GCA_013426205.1_ASM1342620v1_genomic.fna.gz"
@@ -34,7 +34,7 @@ export POD5_DIR="${WORK_DIR}/raw_data"
 # find model names with: 
 # srun --mem=20G -c 2 -A chsi -p chsi apptainer exec oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1 dorado download --list
 # export DEMUX_MODEL_STRING="sup"
-export DORADO_MODEL_STRING="sup,5mC_5hmC,6mA"
+export DORADO_MODEL_STRING="sup,5mC_5hmC,6mA,4mC_5mC"
 #-----------------------------
 # find demux information with: 
 # srun --mem=5G -c 2 -A chsi -p chsi apptainer exec oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1 dorado demux --help
@@ -49,10 +49,4 @@ export KIT_NAME="SQK-NBD114-96" # for options run see --kit-name in `dorado demu
 # https://community.nanoporetech.com/docs/prepare/library_prep_protocols/experiment-companion-minknow/v/mke_1013_v1_revdc_11apr2016/sample-sheet-upload
 
 export SAMPLE_SHEET="/datacommons/graneklab/projects/bsf_mb_epigenetics/ont_dna_data/Methylation_T_samples_pool/methylation_tsample_sample_sheet.csv"
-#-----------------------------
 
-# TODO
-# 1. Clean up
-# 2. move to config examples
-# 3. Use new image: docker://ontresearch/dorado:sha58b978562389bd0f1842601fb83cdf1eb2920218
-# 4. add 4mC
