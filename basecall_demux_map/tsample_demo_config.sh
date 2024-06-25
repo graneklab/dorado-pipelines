@@ -1,5 +1,11 @@
 set -Eeuo pipefail # https://stackoverflow.com/a/821419
 
+
+#-----------------------------
+# To run this:
+#  1. `git clone git@gitlab.oit.duke.edu:granek-lab/projects/dorado-pipelines.git`
+#  2. `dorado-pipelines/basecall_demux_map/main_sbatch.sh PATH_TO_THIS_CONFIG`
+
 #-----------------------------
 export DORADO_SIF_PATH='oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1'
 export POD5_SIF_PATH='oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/meta-methylome-simage:v002'
@@ -73,3 +79,11 @@ export SAMPLE_SHEET="/datacommons/graneklab/projects/bsf_mb_epigenetics/ont_dna_
 # export DORADO_CALLING_MODEL="dna_r10.4.1_e8.2_400bps_sup@v4.2.0"
 # export DORADO_MOD_MODEL="dna_r10.4.1_e8.2_400bps_sup@v4.2.0" # "dna_r9.4.1_e8_sup@v3.6" # 
 #-----------------------------
+
+
+
+# TODO
+# 1. Clean up
+# 2. move to config examples
+# 3. Use new image: docker://ontresearch/dorado:sha58b978562389bd0f1842601fb83cdf1eb2920218
+# 4. add 4mC
