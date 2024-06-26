@@ -22,7 +22,7 @@ if [ "$MD5_RESULT" -eq 0 ]; then
 else
     echo "Need to download reference genome"
     apptainer exec \
-		${DORADO_SIF_PATH} \
+		${CURL_SIF} \
 		curl \
 			--output ${REFERENCE_GENOME} \
 			${REFERENCE_GENOME_URL}

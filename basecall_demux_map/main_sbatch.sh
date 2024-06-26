@@ -24,6 +24,8 @@ source "$CONFIG_FILE"
 #-----------------------------
 # Auto-configured variables
 
+export CURL_SIF="docker://curlimages/curl:8.8.0"
+
 export RESULTS_DIR="${WORK_DIR}/results"
 export DORADO_MODEL_DIR="${WORK_DIR}/dorado_models"
 

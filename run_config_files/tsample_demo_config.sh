@@ -7,7 +7,7 @@ set -Eeuo pipefail # https://stackoverflow.com/a/821419
 #  2. `dorado-pipelines/basecall_demux_map/main_sbatch.sh PATH_TO_THIS_CONFIG`
 
 #-----------------------------
-export DORADO_SIF_PATH='docker://ontresearch/dorado:sha58b978562389bd0f1842601fb83cdf1eb2920218'
+export DORADO_SIF_PATH='docker://ontresearch/dorado:sha58b978562389bd0f1842601fb83cdf1eb2920218' # dorado version 0.7.2+9ac85c6
 export POD5_SIF_PATH='oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/meta-methylome-simage:v002'
 #-----------------------------
 export REFERENCE_GENOME_URL="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/013/426/205/GCA_013426205.1_ASM1342620v1/GCA_013426205.1_ASM1342620v1_genomic.fna.gz"
@@ -33,7 +33,7 @@ export POD5_DIR="${WORK_DIR}/raw_data"
 # dorado duplex will fail if a requested model is not available for your dataset (e.g. 6mA)
 # find model names with: 
 # srun --mem=20G -c 2 -A chsi -p chsi apptainer exec oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1 dorado download --list
-# export DEMUX_MODEL_STRING="sup"
+# dorado won't do 4mC_5mC and 5mC_5hmC simultaneously
 export DORADO_MODEL_STRING="sup,5mC_5hmC,6mA"
 # export DORADO_MODEL_STRING="sup,4mC_5mC,6mA"
 #-----------------------------
