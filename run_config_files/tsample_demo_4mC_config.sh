@@ -27,15 +27,15 @@ export REFERENCE_GENOME_MD5="7d53077d823457819dd369b43e70ddf5  GCA_013426205.1_A
 #-----------------------------
 # demo data
 SCRATCH_DIR="/cwork/${USER}"
-export WORK_DIR="${SCRATCH_DIR}/t_samples_demo"
+export WORK_DIR="${SCRATCH_DIR}/t_samples_demo_4mC"
 export POD5_DIR="${SCRATCH_DIR}/t_samples_demo_raw_data"
 #-----------------------------
 # dorado duplex will fail if a requested model is not available for your dataset (e.g. 6mA)
 # find model names with: 
 # srun --mem=20G -c 2 -A chsi -p chsi apptainer exec oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1 dorado download --list
 # dorado won't do 4mC_5mC and 5mC_5hmC simultaneously
-export DORADO_MODEL_STRING="sup,5mC_5hmC,6mA"
-# export DORADO_MODEL_STRING="sup,4mC_5mC,6mA"
+# export DORADO_MODEL_STRING="sup,5mC_5hmC,6mA"
+export DORADO_MODEL_STRING="sup,4mC_5mC,6mA"
 #-----------------------------
 # find demux information with: 
 # srun --mem=5G -c 2 -A chsi -p chsi apptainer exec oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1 dorado demux --help
