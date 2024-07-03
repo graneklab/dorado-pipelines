@@ -60,15 +60,15 @@ FILE_COUNT=$(( $FILE_COUNT - 1 ))
 #-----------------------------
 
 # 0. Download Dorado Models
-JOBID_05=$(sbatch --parsable --job-name=download_models --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/download_models__sbatch_job.sh)
+JOBID_05=$(sbatch --parsable --job-name=download_models --partition=${CPUJOB_PARTITION} --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/download_models__sbatch_job.sh)
 
-JOBID_06=$(sbatch --parsable --job-name=download_genome --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/download_genome__sbatch_job.sh)
+JOBID_06=$(sbatch --parsable --job-name=download_genome --partition=${CPUJOB_PARTITION} --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/download_genome__sbatch_job.sh)
 export JOBID_06 # mapping depends on the genome
 
 # https://github.com/nanoporetech/dorado/issues/600#issuecomment-1915188395
 
 # 1. Basecall individual POD5 files
-JOBID_20=$(sbatch --parsable --dependency=afterok:${JOBID_05} --array=0-$FILE_COUNT --job-name=dorado_basecall --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/basecall__sbatch_job.sh)
+JOBID_20=$(sbatch --parsable --dependency=afterok:${JOBID_05} --array=0-$FILE_COUNT --job-name=dorado_basecall --partition=${GPUJOB_PARTITION} --gpus=${GPUJOB_GPUS} --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/basecall__sbatch_job.sh)
 
 # 3. Demux. Need to demux before mapping because demux trims reads!
-JOBID_30=$(sbatch --parsable --dependency=afterok:${JOBID_20} --job-name=demux --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/demux__sbatch_job.sh)
+JOBID_30=$(sbatch --parsable --dependency=afterok:${JOBID_20} --job-name=demux --partition=${CPUJOB_PARTITION} --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/demux__sbatch_job.sh)

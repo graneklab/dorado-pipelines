@@ -24,6 +24,11 @@ export REFERENCE_GENOME_MD5="7d53077d823457819dd369b43e70ddf5  GCA_013426205.1_A
 # http://ftp.ensemblgenomes.org/pub/fungi/release-58/fasta/fungi_ascomycota5_collection/metarhizium_brunneum_gca_013426205/dna/Metarhizium_brunneum_gca_013426205.ASM1342620v1.dna.toplevel.fa.gz
 # https://ftp.ensemblgenomes.ebi.ac.uk/pub/fungi/release-58/gff3/fungi_ascomycota5_collection/metarhizium_brunneum_gca_013426205/Metarhizium_brunneum_gca_013426205.ASM1342620v1.58.gff3.gz
 #-----------------------------
+export SBATCH_ACCOUNT="chsi"
+
+export CPUJOB_PARTITION="chsi"
+export GPUJOB_PARTITION="chsi-gpu,scavenger-gpu"
+export GPUJOB_GPUS="RTX2080:1"
 #-----------------------------
 # demo data
 SCRATCH_DIR="/cwork/${USER}"

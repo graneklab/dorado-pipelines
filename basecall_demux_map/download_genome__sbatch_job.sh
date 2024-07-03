@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-#SBATCH --partition=chsi
-#SBATCH -A chsi
-
+# #SBATCH --partition=chsi
+# #SBATCH -A chsi
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=2G

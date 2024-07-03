@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-#SBATCH --partition=chsi-gpu
-#SBATCH -A chsi
+# #SBATCH --partition=chsi-gpu
+# #SBATCH -A chsi
 
-#SBATCH --ntasks=1
+# #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=6
-#SBATCH --mem=0
-#SBATCH --gres=gpu:1
+#SBATCH --mem=20G
+# #SBATCH --gres=gpu:1
 
 set -Eeuo pipefail # https://stackoverflow.com/a/821419
 
