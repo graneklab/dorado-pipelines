@@ -1,9 +1,14 @@
 set -Eeuo pipefail # https://stackoverflow.com/a/821419
 
 #-----------------------------
-export DORADO_SIF_PATH='oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1'
-export POD5_SIF_PATH='oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/meta-methylome-simage:v002'
+# To run this:
+#  1. `git clone git@gitlab.oit.duke.edu:granek-lab/projects/dorado-pipelines.git`
+#  2. `dorado-pipelines/basecall_demux_map/main_sbatch.sh PATH_TO_THIS_CONFIG`
 
+#-----------------------------
+export DORADO_SIF_PATH='docker://ontresearch/dorado:sha58b978562389bd0f1842601fb83cdf1eb2920218' # dorado version 0.7.2+9ac85c6
+export POD5_SIF_PATH='oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/meta-methylome-simage:v002'
+#-----------------------------
 export REFERENCE_GENOME_URL="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/013/426/205/GCA_013426205.1_ASM1342620v1/GCA_013426205.1_ASM1342620v1_genomic.fna.gz"
 export REFERENCE_GENOME_MD5="7d53077d823457819dd369b43e70ddf5  GCA_013426205.1_ASM1342620v1_genomic.fna.gz"
 # NCBI
@@ -18,24 +23,22 @@ export REFERENCE_GENOME_MD5="7d53077d823457819dd369b43e70ddf5  GCA_013426205.1_A
 # http://ftp.ensemblgenomes.org/pub/fungi/release-58/fasta/fungi_ascomycota5_collection/metarhizium_brunneum_gca_013426205/dna/Metarhizium_brunneum_gca_013426205.ASM1342620v1.dna.toplevel.fa.gz
 # https://ftp.ensemblgenomes.ebi.ac.uk/pub/fungi/release-58/gff3/fungi_ascomycota5_collection/metarhizium_brunneum_gca_013426205/Metarhizium_brunneum_gca_013426205.ASM1342620v1.58.gff3.gz
 #-----------------------------
-SCRATCH_DIR="/cwork/${USER}"
 #-----------------------------
 # T sample data
+SCRATCH_DIR="/cwork/${USER}"
 export WORK_DIR="${SCRATCH_DIR}/t_samples_full"
 export POD5_DIR="/datacommons/graneklab/projects/bsf_mb_epigenetics/ont_dna_data/Methylation_T_samples_pool/20240412_1530_P2S-01272-A_PAS28139_d8faa887/pod5"
-#-----------------------------
-# demo data
-# export WORK_DIR="${SCRATCH_DIR}/t_samples_demo"
-# export POD5_DIR="${WORK_DIR}/raw_data"
 #-----------------------------
 # dorado duplex will fail if a requested model is not available for your dataset (e.g. 6mA)
 # find model names with: 
 # srun --mem=20G -c 2 -A chsi -p chsi apptainer exec oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1 dorado download --list
-# export DEMUX_MODEL_STRING="sup"
+# dorado won't do 4mC_5mC and 5mC_5hmC simultaneously
 export DORADO_MODEL_STRING="sup,5mC_5hmC,6mA"
+# export DORADO_MODEL_STRING="sup,4mC_5mC,6mA"
 #-----------------------------
-export KIT_NAME="SQK-NBD114-96" # for options run see --kit-name in `dorado demux --help`
+# find demux information with: 
 # srun --mem=5G -c 2 -A chsi -p chsi apptainer exec oras://gitlab-registry.oit.duke.edu/granek-lab/granek-container-images/dorado-simg:v0_6_1 dorado demux --help
+export KIT_NAME="SQK-NBD114-96" # for options run see --kit-name in `dorado demux --help`
 
 #--------------
 ## Sample Sheet
