@@ -23,10 +23,15 @@ export REFERENCE_GENOME_MD5="7d53077d823457819dd369b43e70ddf5  GCA_013426205.1_A
 # http://ftp.ensemblgenomes.org/pub/fungi/release-58/fasta/fungi_ascomycota5_collection/metarhizium_brunneum_gca_013426205/dna/Metarhizium_brunneum_gca_013426205.ASM1342620v1.dna.toplevel.fa.gz
 # https://ftp.ensemblgenomes.ebi.ac.uk/pub/fungi/release-58/gff3/fungi_ascomycota5_collection/metarhizium_brunneum_gca_013426205/Metarhizium_brunneum_gca_013426205.ASM1342620v1.58.gff3.gz
 #-----------------------------
+export SBATCH_ACCOUNT="chsi"
+
+export CPUJOB_PARTITION="chsi"
+export GPUJOB_PARTITION="chsi-gpu,scavenger-gpu"
+export GPUJOB_GPUS="RTX2080:1"
 #-----------------------------
 # T sample data
 SCRATCH_DIR="/cwork/${USER}"
-export WORK_DIR="${SCRATCH_DIR}/t_samples_full"
+export WORK_DIR="${SCRATCH_DIR}/t_samples_full_6mA_5mC"
 export POD5_DIR="/datacommons/graneklab/projects/bsf_mb_epigenetics/ont_dna_data/Methylation_T_samples_pool/20240412_1530_P2S-01272-A_PAS28139_d8faa887/pod5"
 #-----------------------------
 # dorado duplex will fail if a requested model is not available for your dataset (e.g. 6mA)
