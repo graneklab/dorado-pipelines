@@ -27,7 +27,8 @@ export SBATCH_ACCOUNT="chsi"
 
 export CPUJOB_PARTITION="chsi"
 export GPUJOB_PARTITION="chsi-gpu,scavenger-gpu"
-export GPUJOB_GPUS="RTX2080:1"
+export GPUJOB_GPUS="RTXA5000:1"
+# export GPUJOB_GPUS="RTX2080:1"                                                                                                                                                                                                                                                                     
 #-----------------------------
 # T sample data
 SCRATCH_DIR="/cwork/${USER}"
