@@ -31,7 +31,7 @@ else
 
   apptainer exec \
     ${POD5_SIF_PATH} \
-    pod5 view ${POD5_DIR} --include "read_id, channel" --output ${POD5_SUMMARY_WCHANNEL}
+    pod5 view ${POD5_DIR} --include "read_id, channel" --output ${POD5_SUMMARY_WCHANNEL} --threads $SLURM_JOB_CPUS_PER_NODE --recursive
   date > $POD5_VIEW_STAMP
 fi
 
@@ -44,7 +44,7 @@ else
 
   apptainer exec \
     ${POD5_SIF_PATH} \
-    pod5 subset ${POD5_DIR} --summary ${POD5_SUMMARY_WCHANNEL} --columns channel --threads $SLURM_JOB_CPUS_PER_NODE --output $SPLIT_POD5_DIR
+    pod5 subset ${POD5_DIR} --summary ${POD5_SUMMARY_WCHANNEL} --columns channel --threads $SLURM_JOB_CPUS_PER_NODE --output $SPLIT_POD5_DIR --recursive
   date > $POD5_SUBSET_STAMP
 
 fi
