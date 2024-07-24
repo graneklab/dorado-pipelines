@@ -70,4 +70,6 @@ fi
 # Need to submit subsequent jobs here so we can use the number of demuxed BAM
 # files for setting up the sbatch array.
 # Could parse this from the sample sheet in the future!
+
+echo "Running main_part2__sbatch.sh"
 ${SCRIPT_PATH}/main_part2__sbatch.sh
