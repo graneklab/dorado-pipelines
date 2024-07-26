@@ -23,8 +23,8 @@ source "$CONFIG_FILE"
 #-----------------------------
 # Auto-configured variables
 
-export RESULTS_DIR="${WORK_DIR}/results"
-export DORADO_MODEL_DIR="${WORK_DIR}/dorado_models"
+export RESULTS_DIR="${OUTDIR}/results"
+export DORADO_MODEL_DIR="${OUTDIR}/dorado_models"
 
 export LOG_DIR="${RESULTS_DIR}/log_dir"
 export STAMP_DIR="${RESULTS_DIR}/stamp_dir"
@@ -36,7 +36,7 @@ export MERGED_UBAM="${UBAM_DIR}/merged_ubam.bam"
 
 #-----------------------------
 SAMPLE_SHEET_DIR=$(dirname $SAMPLE_SHEET)
-export APPTAINER_BINDPATH="${WORK_DIR},${POD5_DIR},${SAMPLE_SHEET_DIR}"
+export APPTAINER_BINDPATH="${OUTDIR},${POD5_DIR},${SAMPLE_SHEET_DIR}"
 #-----------------------------
 mkdir -p $RESULTS_DIR $LOG_DIR $STAMP_DIR $UBAM_DIR $DEMUX_DIR
 

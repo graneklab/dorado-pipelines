@@ -26,8 +26,8 @@ source "$CONFIG_FILE"
 
 export CURL_SIF="docker://curlimages/curl:8.8.0"
 
-export RESULTS_DIR="${WORK_DIR}/results"
-export DORADO_MODEL_DIR="${WORK_DIR}/dorado_models"
+export RESULTS_DIR="${OUTDIR}/results"
+export DORADO_MODEL_DIR="${OUTDIR}/dorado_models"
 
 export LOG_DIR="${RESULTS_DIR}/log_dir"
 export STAMP_DIR="${RESULTS_DIR}/stamp_dir"
@@ -41,7 +41,7 @@ export MAPPED_BAM_DIR="${RESULTS_DIR}/mapped_bams"
 # export READID_DIR="${RESULTS_DIR}/read_ids"
 # export DUPLEX_UBAM_DIR="${RESULTS_DIR}/duplex_ubams"
 
-export GENOME_DIR="${WORK_DIR}/genome"
+export GENOME_DIR="${OUTDIR}/genome"
 export REFERENCE_GENOME=${GENOME_DIR}/$(basename "$REFERENCE_GENOME_URL")
 #-----------
 mkdir -p $RESULTS_DIR $LOG_DIR $STAMP_DIR $UBAM_DIR $DEMUX_DIR ${GENOME_DIR} ${MAPPED_BAM_DIR}
@@ -50,7 +50,7 @@ echo "LOG_DIR: $LOG_DIR"
 #-----------------------------
 # Apptainer Bind
 SAMPLE_SHEET_DIR=$(dirname $SAMPLE_SHEET)
-export APPTAINER_BINDPATH="${WORK_DIR},${POD5_DIR},${SAMPLE_SHEET_DIR}"
+export APPTAINER_BINDPATH="${OUTDIR},${POD5_DIR},${SAMPLE_SHEET_DIR}"
 echo "APPTAINER_BINDPATH: ${APPTAINER_BINDPATH}"
 #-----------------------------
 POD_DIR_ARRAY=(${POD5_DIR}/*.pod5)

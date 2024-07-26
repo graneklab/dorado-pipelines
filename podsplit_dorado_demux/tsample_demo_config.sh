@@ -5,13 +5,13 @@ export POD5_SIF_PATH='oras://gitlab-registry.oit.duke.edu/granek-lab/granek-cont
 #-----------------------------
 #-----------------------------
 # T sample data
-# export WORK_DIR="${SCRATCH_DIR}/${USER}/t_samples_test"
+# export OUTDIR="${SCRATCH_DIR}/${USER}/t_samples_test"
 # export POD5_DIR="/datacommons/graneklab/projects/bsf_mb_epigenetics/ont_dna_data/Methylation_T_samples_pool/20240412_1530_P2S-01272-A_PAS28139_d8faa887/pod5"
 #-----------------------------
 # demo data
 SCRATCH_DIR="/cwork/${USER}"
-export WORK_DIR="${SCRATCH_DIR}/t_samples_demo"
-export POD5_DIR="${WORK_DIR}/raw_data"
+export OUTDIR="${SCRATCH_DIR}/t_samples_demo"
+export POD5_DIR="${OUTDIR}/raw_data"
 #-----------------------------
 # dorado duplex will fail if a requested model is not available for your dataset (e.g. 6mA)
 # find model names with: 
@@ -32,8 +32,8 @@ export KIT_NAME="SQK-NBD114-96" # for options run see --kit-name in `dorado demu
 export SAMPLE_SHEET="/datacommons/graneklab/projects/bsf_mb_epigenetics/ont_dna_data/Methylation_T_samples_pool/methylation_tsample_sample_sheet.csv"
 #-----------------------------
 
-# REF_GENOME="${WORK_DIR}/data/wf-basecalling-demo/GCA_000001405.15_GRCh38_no_alt_analysis_set.fasta"
-# OUT_DIR="${WORK_DIR}/output"
+# REF_GENOME="${OUTDIR}/data/wf-basecalling-demo/GCA_000001405.15_GRCh38_no_alt_analysis_set.fasta"
+# OUT_DIR="${OUTDIR}/output"
 #-----------------------------
 
 
@@ -51,8 +51,8 @@ export SAMPLE_SHEET="/datacommons/graneklab/projects/bsf_mb_epigenetics/ont_dna_
 
 # export OUTPUT_FASTQ=${FASTQ_DIR}/$(basename "$DORADO_OUTPUT_BAM" "_unmapped.bam")".fastq.gz"
 
-# export DATA_DIR="${WORK_DIR}/seqdata"
-# export DORADO_MODEL_DIR="${WORK_DIR}/models"
+# export DATA_DIR="${OUTDIR}/seqdata"
+# export DORADO_MODEL_DIR="${OUTDIR}/models"
 
 # export DORADO_CALLING_MODEL="dna_r10.4.1_e8.2_400bps_sup@v4.2.0"
 # export DORADO_MOD_MODEL="dna_r10.4.1_e8.2_400bps_sup@v4.2.0" # "dna_r9.4.1_e8_sup@v3.6" # 

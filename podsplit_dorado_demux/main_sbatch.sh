@@ -23,8 +23,8 @@ source "$CONFIG_FILE"
 #-----------------------------
 # Auto-configured variables
 
-export RESULTS_DIR="${WORK_DIR}/results"
-export DORADO_MODEL_DIR="${WORK_DIR}/dorado_models"
+export RESULTS_DIR="${OUTDIR}/results"
+export DORADO_MODEL_DIR="${OUTDIR}/dorado_models"
 
 export LOG_DIR="${RESULTS_DIR}/log_dir"
 export STAMP_DIR="${RESULTS_DIR}/stamp_dir"
@@ -46,7 +46,7 @@ echo "RESULTS_DIR: $RESULTS_DIR"
 echo "LOG_DIR: $LOG_DIR"
 #-----------------------------
 # Apptainer Bind
-export APPTAINER_BINDPATH="${WORK_DIR},${POD5_DIR}"
+export APPTAINER_BINDPATH="${OUTDIR},${POD5_DIR}"
 
 if [ -v SAMPLE_SHEET ]; then 
   echo "SAMPLE_SHEET IS set"

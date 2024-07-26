@@ -18,7 +18,7 @@
 
 set -Eeuo pipefail # https://stackoverflow.com/a/821419
 
-POD5_SUMMARY_WCHANNEL="${WORK_DIR}/pod5_summary_wchannel.tsv"
+POD5_SUMMARY_WCHANNEL="${OUTDIR}/pod5_summary_wchannel.tsv"
 POD5_VIEW_STAMP="${STAMP_DIR}/pod5_view_stamp.txt"
 POD5_SUBSET_STAMP="${STAMP_DIR}/pod5_subset_stamp.txt"
 

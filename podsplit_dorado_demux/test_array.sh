@@ -22,13 +22,13 @@ source "$CONFIG_FILE"
 #-----------------------------
 # Auto-configured variables
 
-export RESULTS_DIR="${WORK_DIR}/results"
+export RESULTS_DIR="${OUTDIR}/results"
 export LOG_DIR="${RESULTS_DIR}/log_dir"
 export STAMP_DIR="${RESULTS_DIR}/stamp_dir"
 export SPLIT_POD5_DIR="${RESULTS_DIR}/split_pod5s"
 #-----------------------------
 # export APPTAINER_BINDPATH="/opt,/data:/mnt"
-export APPTAINER_BINDPATH="${WORK_DIR},${POD5_DIR}"
+export APPTAINER_BINDPATH="${OUTDIR},${POD5_DIR}"
 #-----------------------------
 mkdir -p $RESULTS_DIR $LOG_DIR $STAMP_DIR
 
