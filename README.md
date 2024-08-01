@@ -18,6 +18,8 @@ or
 
 `dorado-pipelines/podsplit_dorado_demux/main_sbatch.sh PATH_TO_CONFIG_FILE`
 
+# How do I make a config file
+Use the template as a starting point: [template.config](run_config_files/template.config)
 
 # Notes
 - The pipelines will sometimes fail at one step. If this happens, try running it again, in general it will resume where it died
