@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-echo "By default will use config_sbatch.sh in the same directory as this script"
-echo "An alternate config file can be supplied as a command line option"
-
 set -Eeuo pipefail # https://stackoverflow.com/a/821419
-
 shopt -s nullglob
 
 # https://stackoverflow.com/a/75973157
@@ -16,10 +12,16 @@ shopt -s nullglob
   declare SCRIPT_RUN_DATE="$( date )"
 }
 export SCRIPT_PATH
+#-----------------------------
 
-CONFIG_FILE="${1:-${SCRIPT_PATH}/tsample_demo_config.sh}"
-echo "USING CONFIG: $CONFIG_FILE"
-source "$CONFIG_FILE"
+if [[ $# -ne 1 ]]; then
+    echo "Usage: $0 CONFIG_FILE" >&2
+    exit 2
+else
+    CONFIG_FILE="${1}"
+    echo "USING CONFIG: $CONFIG_FILE"
+    source "$CONFIG_FILE"
+fi
 
 #-----------------------------
 # Auto-configured variables
