@@ -4,8 +4,8 @@
 # #SBATCH -A chsi
 
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
-#SBATCH --mem=5G
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=15G
 
 set -u
 
