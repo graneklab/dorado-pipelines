@@ -46,7 +46,9 @@ echo "LOG_DIR: $LOG_DIR"
 SAMPLE_SHEET_DIR=$(dirname $SAMPLE_SHEET)
 export APPTAINER_BINDPATH="${OUTDIR},${POD5_DIR},${SAMPLE_SHEET_DIR}"
 #-----------------------------
-
+# Log the config file used in this run!
+cp $CONFIG_FILE ${RESULTS_DIR}
+#-----------------------------
 # 0. Download Dorado Models
 JOBID_05=$(sbatch --parsable --job-name=download_models --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/download_models__sbatch_job.sh)
 

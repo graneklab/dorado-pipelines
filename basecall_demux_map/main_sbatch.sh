@@ -60,7 +60,9 @@ POD_DIR_ARRAY=(${POD5_DIR}/*.pod5)
 FILE_COUNT=${#POD_DIR_ARRAY[@]}
 FILE_COUNT=$(( $FILE_COUNT - 1 ))
 #-----------------------------
-
+# Log the config file used in this run!
+cp $CONFIG_FILE ${RESULTS_DIR}
+#-----------------------------
 # 0. Download Dorado Models
 JOBID_05=$(sbatch --parsable --job-name=download_models --partition=${CPUJOB_PARTITION} --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/download_models__sbatch_job.sh)
 
