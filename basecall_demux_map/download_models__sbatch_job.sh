@@ -4,8 +4,11 @@
 # #SBATCH -A chsi
 
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
-#SBATCH --mem=5G
+#SBATCH --cpus-per-task=6
+#SBATCH --mem=20G
+# Requesting more memory than seems necessary because this step seems to hang
+# when downloading container image (if it isn't already cached). Guessing it is
+# a memory issue.
 
 set -Eeuo pipefail # https://stackoverflow.com/a/821419
 
