@@ -14,6 +14,11 @@ mkdir -p $DORADO_MODEL_DIR
 # Apptainer> dorado download --model "sup,5mCG_5hmCG" --verbose --recursive --directory /cwork/josh/temp_models --data /cwork/josh/basecall_demo/data/wf-basecalling-demo/input
 apptainer exec \
 	${DORADO_SIF_PATH} \
+	dorado --version 2> \
+	${RESULTS_DIR}/dorado_version.txt
+
+apptainer exec \
+	${DORADO_SIF_PATH} \
 	dorado download \
 		--verbose \
 		--model ${DORADO_MODEL_STRING} \
