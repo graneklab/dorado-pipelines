@@ -20,7 +20,11 @@ fi
 echo $DORADO_DEVICE
 echo ${DORADO_SIF_PATH}
 #-----------------------------
-POD_DIR_ARRAY=(${POD5_DIR}/*.pod5)
+# POD_DIR_ARRAY=(${POD5_DIR}/*.pod5)
+
+# Recursively search $POD5_DIR for pod5 files
+# https://stackoverflow.com/questions/23356779/how-can-i-store-the-find-command-results-as-an-array-in-bash/54561526#54561526
+readarray -d '' POD_DIR_ARRAY < <(find ${POD5_DIR} -name \*.pod5 -print0)
 POD5_FILE=${POD_DIR_ARRAY[$SLURM_ARRAY_TASK_ID]}
 POD5_BASE=$(basename "$POD5_FILE" ".pod5")
 DORADO_OUTPUT_BAM="${UBAM_DIR}/${POD5_BASE}.ubam"

@@ -55,7 +55,12 @@ SAMPLE_SHEET_DIR=$(dirname $SAMPLE_SHEET)
 export APPTAINER_BINDPATH="${OUTDIR},${POD5_DIR},${SAMPLE_SHEET_DIR}"
 echo "APPTAINER_BINDPATH: ${APPTAINER_BINDPATH}"
 #-----------------------------
-POD_DIR_ARRAY=(${POD5_DIR}/*.pod5)
+# POD_DIR_ARRAY=(${POD5_DIR}/*.pod5)
+
+# Recursively search $POD5_DIR for pod5 files
+# https://stackoverflow.com/questions/23356779/how-can-i-store-the-find-command-results-as-an-array-in-bash/54561526#54561526
+readarray -d '' POD_DIR_ARRAY < <(find ${POD5_DIR} -name \*.pod5 -print0)
+
 
 FILE_COUNT=${#POD_DIR_ARRAY[@]}
 FILE_COUNT=$(( $FILE_COUNT - 1 ))
