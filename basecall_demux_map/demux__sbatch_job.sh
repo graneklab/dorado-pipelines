@@ -56,6 +56,7 @@ else
 			--verbose \
 			--threads $SLURM_JOB_CPUS_PER_NODE \
 			--no-classify \
+			--sample-sheet ${SAMPLE_SHEET} \
 			--output-dir $DEMUX_DIR \
 			$MERGED_UBAM
 
