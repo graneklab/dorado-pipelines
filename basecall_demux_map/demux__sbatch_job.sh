@@ -63,7 +63,7 @@ else
 	# rename unclassified.bam so that it gets ignored in subsequent steps
 	# that look for *.bam files we are really interested in wasting time 
 	# mapping those reads since they failed demux
-	mv ${DEMUX_DIR}/unclassified.bam ${DEMUX_DIR}/unclassified_dot_bam
+	mv ${DEMUX_DIR}/*unclassified.bam ${DEMUX_UNCLASS_DIR}
 
 	date > $DEMUX_STAMP
 fi

@@ -36,6 +36,7 @@ export STAMP_DIR="${RESULTS_DIR}/stamp_dir"
 # export SPLIT_POD5_DIR="${RESULTS_DIR}/split_pod5s"
 export UBAM_DIR="${RESULTS_DIR}/ubams"
 export DEMUX_DIR="${RESULTS_DIR}/demuxed_ubams"
+export DEMUX_UNCLASS_DIR="${RESULTS_DIR}/demuxed_unclassified"
 export MERGED_UBAM="${UBAM_DIR}/merged_ubam.bam"
 export MAPPED_BAM_DIR="${RESULTS_DIR}/mapped_bams"
 # export SIMPLEX_DEMUX_DIR="${RESULTS_DIR}/simplex_demuxed_ubams"
@@ -46,7 +47,7 @@ export MAPPED_BAM_DIR="${RESULTS_DIR}/mapped_bams"
 export GENOME_DIR="${OUTDIR}/genome"
 export REFERENCE_GENOME=${GENOME_DIR}/$(basename "$REFERENCE_GENOME_URL")
 #-----------
-mkdir -p $RESULTS_DIR $LOG_DIR $STAMP_DIR $UBAM_DIR $DEMUX_DIR ${GENOME_DIR} ${MAPPED_BAM_DIR}
+mkdir -p $RESULTS_DIR $LOG_DIR $STAMP_DIR $UBAM_DIR $DEMUX_DIR ${GENOME_DIR} ${MAPPED_BAM_DIR} ${DEMUX_UNCLASS_DIR}
 echo "RESULTS_DIR: $RESULTS_DIR"
 echo "LOG_DIR: $LOG_DIR"
 #-----------------------------
