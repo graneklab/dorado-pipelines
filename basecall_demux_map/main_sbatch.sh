@@ -44,8 +44,19 @@ export MAPPED_BAM_DIR="${RESULTS_DIR}/mapped_bams"
 # export READID_DIR="${RESULTS_DIR}/read_ids"
 # export DUPLEX_UBAM_DIR="${RESULTS_DIR}/duplex_ubams"
 
-export GENOME_DIR="${OUTDIR}/genome"
-export REFERENCE_GENOME=${GENOME_DIR}/$(basename "$REFERENCE_GENOME_URL")
+echo ${REFERENCE_GENOME}
+if [ -n "${REFERENCE_GENOME}" ]; then
+  export GENOME_DIR="$(dirname ${REFERENCE_GENOME})"
+  echo "REFERENCE_GENOME is SET: ${REFERENCE_GENOME}"
+  echo "GENOME_DIR is: ${GENOME_DIR}"
+
+else
+  export GENOME_DIR="${OUTDIR}/genome"
+  echo "REFERENCE_GENOME is NOT set, generating from : REFERENCE_GENOME_URL"
+  export REFERENCE_GENOME=${GENOME_DIR}/$(basename "$REFERENCE_GENOME_URL")
+  echo "REFERENCE_GENOME is now: ${REFERENCE_GENOME}"
+fi
+
 #-----------
 mkdir -p $RESULTS_DIR $LOG_DIR $STAMP_DIR $UBAM_DIR $DEMUX_DIR ${GENOME_DIR} ${MAPPED_BAM_DIR} ${DEMUX_UNCLASS_DIR}
 echo "RESULTS_DIR: $RESULTS_DIR"
