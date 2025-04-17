@@ -64,7 +64,7 @@ echo "LOG_DIR: $LOG_DIR"
 #-----------------------------
 # Apptainer Bind
 SAMPLE_SHEET_DIR=$(dirname $SAMPLE_SHEET)
-export APPTAINER_BINDPATH="${OUTDIR},${POD5_DIR},${SAMPLE_SHEET_DIR}"
+export APPTAINER_BINDPATH="${OUTDIR},${POD5_DIR},${SAMPLE_SHEET_DIR},${GENOME_DIR}"
 echo "APPTAINER_BINDPATH: ${APPTAINER_BINDPATH}"
 #-----------------------------
 # POD_DIR_ARRAY=(${POD5_DIR}/*.pod5)
