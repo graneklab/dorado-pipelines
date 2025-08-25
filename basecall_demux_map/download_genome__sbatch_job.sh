@@ -5,6 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=2G
+#SBATCH --time=1:00:00
 
 # set -Eeuo pipefail # https://stackoverflow.com/a/821419
 set -u
