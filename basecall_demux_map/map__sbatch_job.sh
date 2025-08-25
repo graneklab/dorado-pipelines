@@ -46,6 +46,13 @@ apptainer exec \
       --threads $SLURM_JOB_CPUS_PER_NODE \
       -m 5G"
 
+apptainer exec \
+  ${DORADO_SIF_PATH} \
+  samtools index \
+      --bai \
+      --threads $SLURM_JOB_CPUS_PER_NODE \
+      $FINAL_BAM
+
   date > ${ALIGN_STAMP}
 
 fi
