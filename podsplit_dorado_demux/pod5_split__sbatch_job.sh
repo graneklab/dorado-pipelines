@@ -31,7 +31,8 @@ else
 
   apptainer exec \
     ${POD5_SIF_PATH} \
-    pod5 view ${POD5_DIR} --include "read_id, channel" --output ${POD5_SUMMARY_WCHANNEL} --threads $SLURM_JOB_CPUS_PER_NODE --recursive
+    pod5 view ${POD5_DIR} --include "read_id, channel, end_reason" --threads $SLURM_JOB_CPUS_PER_NODE --recursive | grep -v analysis_config_change | cut -f1,2 > ${POD5_SUMMARY_WCHANNEL}
+    # filter out reads with "analysis_config_change" as an end_reason because these create a problem for pod5 subset
   date > $POD5_VIEW_STAMP
 fi
 
