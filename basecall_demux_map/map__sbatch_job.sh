@@ -6,6 +6,8 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
 #SBATCH --mem=90G
+#SBATCH --time=12:00:00
+
 # peak observed memory usage is 44GB
 #SBATCH --time=6:00:00
 
@@ -44,6 +46,13 @@ apptainer exec \
       -o $FINAL_BAM \
       --threads $SLURM_JOB_CPUS_PER_NODE \
       -m 5G"
+
+apptainer exec \
+  ${DORADO_SIF_PATH} \
+  samtools index \
+      --bai \
+      --threads $SLURM_JOB_CPUS_PER_NODE \
+      $FINAL_BAM
 
   date > ${ALIGN_STAMP}
 

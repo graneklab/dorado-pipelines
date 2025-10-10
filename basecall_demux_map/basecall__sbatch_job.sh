@@ -8,6 +8,7 @@
 #SBATCH --mem=20G
 #SBATCH --time=24:00:00
 # #SBATCH --gres=gpu:1
+#SBATCH --time=12:00:00
 
 set -Eeuo pipefail # https://stackoverflow.com/a/821419
 
