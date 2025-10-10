@@ -53,4 +53,4 @@ fi
 # Need to submit subsequent jobs here, because the number of per-channel pod5 
 # files isn't known until after "pod5 running" subset. We need to know the 
 # number of files to submit as an sbatch array
-sbatch --job-name=main_2 --partition=${CPUJOB_PARTITION} --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log"    ${SCRIPT_PATH}/main_part2__sbatch.sh #--account=${CPU_ACCOUNT}
+sbatch --job-name=main_2 --partition=${CPUJOB_PARTITION} --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log"    ${SCRIPT_PATH}/main_part2__sbatch.sh --account=${CPU_ACCOUNT}

@@ -23,6 +23,15 @@ source "$CONFIG_FILE"
 #-----------------------------
 # Auto-configured variables
 
+# https://stackoverflow.com/a/28085062
+# assigns DEFAULT_VALUE to VARIABLE if not defined.
+# : "${VARIABLE:=DEFAULT_VALUE}"
+# Set CPU_ACCOUNT and GPU_ACCOUNT if config script only uses SBATCH_ACCOUNT
+: "${CPU_ACCOUNT:=SBATCH_ACCOUNT}"
+: "${GPU_ACCOUNT:=SBATCH_ACCOUNT}"
+export GPU_ACCOUNT
+export CPU_ACCOUNT
+
 export UNCLASSIFIED_BAM_BASE="unclassified.bam"
 export RESULTS_DIR="${OUTDIR}/results"
 export DORADO_MODEL_DIR="${OUTDIR}/dorado_models"

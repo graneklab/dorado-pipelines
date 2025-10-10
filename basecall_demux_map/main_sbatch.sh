@@ -26,6 +26,15 @@ fi
 #-----------------------------
 # Auto-configured variables
 
+# https://stackoverflow.com/a/28085062
+# assigns DEFAULT_VALUE to VARIABLE if not defined.
+# : "${VARIABLE:=DEFAULT_VALUE}"
+# Set CPU_ACCOUNT and GPU_ACCOUNT if config script only uses SBATCH_ACCOUNT
+: "${CPU_ACCOUNT:=SBATCH_ACCOUNT}"
+: "${GPU_ACCOUNT:=SBATCH_ACCOUNT}"
+export GPU_ACCOUNT
+export CPU_ACCOUNT
+
 export CURL_SIF="docker://curlimages/curl:8.8.0"
 
 export RESULTS_DIR="${OUTDIR}/results"

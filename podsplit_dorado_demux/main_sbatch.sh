@@ -26,6 +26,15 @@ fi
 #-----------------------------
 # Auto-configured variables
 
+# https://stackoverflow.com/a/28085062
+# assigns DEFAULT_VALUE to VARIABLE if not defined.
+# : "${VARIABLE:=DEFAULT_VALUE}"
+# Set CPU_ACCOUNT and GPU_ACCOUNT if config script only uses SBATCH_ACCOUNT
+: "${CPU_ACCOUNT:=SBATCH_ACCOUNT}"
+: "${GPU_ACCOUNT:=SBATCH_ACCOUNT}"
+export GPU_ACCOUNT
+export CPU_ACCOUNT
+
 export RESULTS_DIR="${OUTDIR}/results"
 export DORADO_MODEL_DIR="${OUTDIR}/dorado_models"
 
@@ -63,8 +72,8 @@ fi
 cp $CONFIG_FILE ${RESULTS_DIR}
 #-----------------------------
 # 0. Download Dorado Models
-JOBID_05=$(sbatch --parsable --job-name=download_models --partition=${CPUJOB_PARTITION} --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/download_models__sbatch_job.sh) #--account=${CPU_ACCOUNT}
+JOBID_05=$(sbatch --parsable --job-name=download_models --partition=${CPUJOB_PARTITION} --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/download_models__sbatch_job.sh) --account=${CPU_ACCOUNT}
 
 # 1. Subset POD5s by channel https://github.com/nanoporetech/dorado?tab=readme-ov-file#improving-the-speed-of-duplex-basecalling
-JOBID_10=$(sbatch --parsable --dependency=afterok:${JOBID_05} --partition=${CPUJOB_PARTITION} --job-name=pod5_split --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/pod5_split__sbatch_job.sh) #--account=${CPU_ACCOUNT}
+JOBID_10=$(sbatch --parsable --dependency=afterok:${JOBID_05} --partition=${CPUJOB_PARTITION} --job-name=pod5_split --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/pod5_split__sbatch_job.sh) --account=${CPU_ACCOUNT}
 # JOBID_10=$(sbatch --parsable --job-name=pod5_split --output="$LOG_DIR/%x-%A-%a.log" --error="$LOG_DIR/%x-%A-%a.log" ${SCRIPT_PATH}/pod5_split__sbatch_job.sh)
