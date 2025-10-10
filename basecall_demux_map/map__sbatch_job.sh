@@ -7,6 +7,7 @@
 #SBATCH --cpus-per-task=20
 #SBATCH --mem=90G
 # peak observed memory usage is 44GB
+#SBATCH --time=6:00:00
 
 set -Eeuo pipefail # https://stackoverflow.com/a/821419
 

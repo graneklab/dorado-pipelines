@@ -9,6 +9,7 @@
 # Requesting more memory than seems necessary because this step seems to hang
 # when downloading container image (if it isn't already cached). Guessing it is
 # a memory issue.
+#SBATCH --time=6:00:00
 
 set -Eeuo pipefail # https://stackoverflow.com/a/821419
 
