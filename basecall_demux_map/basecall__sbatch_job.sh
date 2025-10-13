@@ -50,6 +50,7 @@ else
     dorado basecaller \
       ${DORADO_MODEL_STRING} \
       ${POD5_FILE} \
+      --models-directory $DORADO_MODEL_DIR \
       --device ${DORADO_DEVICE} \
       --kit-name ${KIT_NAME} \
       --sample-sheet ${SAMPLE_SHEET} > \

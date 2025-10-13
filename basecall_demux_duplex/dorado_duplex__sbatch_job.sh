@@ -62,6 +62,7 @@ else
     dorado duplex \
       ${DORADO_MODEL_STRING} \
       ${POD5_DIR} \
+      --models-directory $DORADO_MODEL_DIR \
       --device $DORADO_DEVICE \
       --threads $SLURM_JOB_CPUS_PER_NODE \
       --read-ids ${READ_ID_FILE} \

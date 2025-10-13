@@ -49,6 +49,7 @@ else
     dorado duplex \
       ${DORADO_MODEL_STRING} \
       ${POD5_FILE} \
+      --models-directory $DORADO_MODEL_DIR \
       --device $DORADO_DEVICE \
       --threads $SLURM_JOB_CPUS_PER_NODE \
     > ${DORADO_OUTPUT_BAM}
