@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1117855107.svg)](https://doi.org/10.5281/zenodo.17978478)
+
 # Which Pipeline?
 
 - *basecall\_demux\_map*
